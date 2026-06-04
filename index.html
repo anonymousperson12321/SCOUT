@@ -255,6 +255,11 @@
       max-width: 48%;
       text-align: center;
     }
+    #sim-videos-grid[data-task="open_box"] .rw-video-item,
+    #sim-videos-grid[data-task="turn_faucet"] .rw-video-item {
+      flex: 1 1 36%;
+      max-width: 36%;
+    }
     .rw-video-item video {
       width: 100%;
       border-radius: 8px;
@@ -573,13 +578,17 @@
           { src: './static/videos/simopenbox/1_step.mp4',  label: '1-Step Adaptation' },
           { src: './static/videos/simopenbox/2_steps.mp4', label: '2-Step Adaptation' },
         ],
-        open_doors:   [],
+        open_doors:   [
+          { src: './static/videos/simdoor/8983_link_1_1_adapt5.mp4',        label: 'Door 8983' },
+          { src: './static/videos/simdoor/9003_link_1_handle_2_adapt5.mp4', label: 'Door 9003' },
+        ],
       };
 
       var currentSimTask = 'slide_brick';
 
       function renderSimVideos() {
         var grid = document.getElementById('sim-videos-grid');
+        grid.setAttribute('data-task', currentSimTask);
         var vids = simVideoData[currentSimTask];
         if (!vids || vids.length === 0) {
           grid.innerHTML = '<p class="rw-empty-msg has-text-centered">Videos coming soon for this task.</p>';
